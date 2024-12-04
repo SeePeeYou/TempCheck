@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.page {
+  max-height: calc(100vh - 64px);
+  margin-inline: 1rem;
+  color: #011056;
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  .subtext {
+    font-size: 0.75rem;
+    color: #7f84a6;
+  }
+}

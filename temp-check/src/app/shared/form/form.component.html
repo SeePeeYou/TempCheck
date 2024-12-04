@@ -1,0 +1,38 @@
+<form class="pb-24" [formGroup]="quizForm" (ngSubmit)="onSubmit()">
+    <div formArrayName="questions">
+        <div class="pb-4 my-4 border-b-2" *ngFor="let questionCtrl of questionsFormArray.controls; let i = index"
+            [formGroupName]="i">
+            <h3 class="p-2 my-2 rounded text-[#7e8a8c] bg-[#ebeded]">{{ questions()[i].text }}</h3>
+            @if(questions()[i].image; as image){
+            <img class="rounded image-full my-2" [src]="image" alt="Question image">
+            }
+            <div *ngFor="let option of questions()[i].options">
+                <label class="label cursor-pointer">
+                    <input class="radio" [ngClass]="{
+                        'radio-error':
+                          isSubmitted &&
+                          questionResults[i].userAnswer === option &&
+                          !questionResults[i].isCorrect,
+                        'radio-success':
+                          isSubmitted && questionResults[i].correctAnswer === option
+                      }" type="radio" formControlName="answer" [value]="option" />
+                    <span class="label-text" [ngClass]="{
+                        'text-error':
+                          isSubmitted &&
+                          questionResults[i].userAnswer === option &&
+                          !questionResults[i].isCorrect,
+                        'text-success':
+                          isSubmitted && questionResults[i].correctAnswer === option
+                      }">{{ option }}</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="button-container flex flex-col items-center">
+        @if(!isSubmitted){
+        <button class="btn btn-primary btn-wide mt-4" type="submit">Submit</button>
+        }@else{
+        <p class="my-4 text-xl">Your score was {{ score }} out of {{ questions().length }}</p>
+        }
+    </div>
+</form>

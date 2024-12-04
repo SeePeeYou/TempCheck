@@ -1,0 +1,22 @@
+<div class="page">
+    <h2 class="text-[#011056] font-bold text-xl text-center sticky top-[52px] bg-base-100">Kripke Structures</h2>
+    <div role="tablist" class="tabs tabs-bordered sticky top-[80px] bg-base-100">
+        <a role="tab" class="tab" [class.tab-active]="activeTab === 'intro'"
+            (click)="setActiveTab($event, 'intro')">Intro</a>
+        <a role="tab" class="tab" [class.tab-active]="activeTab === 'exercises'"
+            (click)="setActiveTab($event, 'exercises')">Exercises</a>
+        <a role="tab" class="tab" [class.tab-active]="activeTab === 'evaluation'"
+            (click)="setActiveTab($event, 'evaluation')">Evaluation</a>
+    </div>
+    <div class="tab-pages flex max-w-full overflow-hidden gap-[10vw]">
+        <section id="intro">
+            <app-lesson [items]="content" />
+        </section>
+        <section id="exercises">
+            <app-form [questions]="questions" [userAnswers]="[]" />
+        </section>
+        <section id="evaluation">
+            <app-form [questions]="questions" [(userAnswers)]="service.introAnswers" />
+        </section>
+    </div>
+</div>
