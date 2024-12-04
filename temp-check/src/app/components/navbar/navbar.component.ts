@@ -14,4 +14,12 @@ export class NavbarComponent {
   isActive(url: string): boolean {
     return this.router.url === url;
   }
+
+  goBack(): void {
+    window.history.back();
+  }
+
+  goForward(): void {
+    window.history.forward();
+  }
 }

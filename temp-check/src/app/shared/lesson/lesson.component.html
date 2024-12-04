@@ -1,0 +1,18 @@
+<div class="lesson py-4 text-center flex flex-col gap-2">
+    @for (item of items(); track $index) {
+    @switch (item.type) {
+    @case ('header') {
+    <h3 class="text-[#011056] text-xl font-bold">{{item.content}}</h3>
+    }
+    @case ('video') {
+    <iframe class="aspect-video w-full" [src]="item.content | safe "></iframe>
+    }
+    @case ('image') {
+    <img class="rounded" [src]="item.content" alt="Lesson image">
+    }
+    @default {
+    <p class="text-[#011056] text-sm">{{item.content}}</p>
+    }
+    }
+    }
+</div>

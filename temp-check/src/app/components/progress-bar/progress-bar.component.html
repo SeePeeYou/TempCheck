@@ -1,0 +1,6 @@
+<div class="progress-bar flex flex-col items-center">
+    <progress class="progress progress-primary w-[90%]" [value]="service.percentage()" max="100"></progress>
+    <p class="text-sm text-[#7f84a6]">Track your learnering progress through the course. <span
+            class="text-[#011056]">{{service.percentage().toFixed(0)}}%</span>
+    </p>
+</div>
